@@ -1,0 +1,22 @@
+To connect an **Arduino** to a **Raspberry Pi** using a **level shifter**, you'll need to account for the voltage difference between the two devices. The **Arduino** typically operates at **5V logic**, while the **Raspberry Pi** uses **3.3V logic**, meaning direct connections could damage the Pi's GPIO pins.
+
+### **Steps to Connect Using a Level Shifter**
+1. **Choose a Level Shifter**  
+   - A **bi-directional logic level converter** (e.g., **TXB0108** or **74AHCT125**) is ideal.
+   - Ensure it supports **5V to 3.3V conversion**.
+
+2. **Wire the Connections**  
+   - **Power the Level Shifter**  
+     - Connect **HV (High Voltage)** to **5V** from the Arduino.  
+     - Connect **LV (Low Voltage)** to **3.3V** from the Raspberry Pi.  
+     - Connect **GND** to both devices.
+
+   - **Data Lines**  
+     - Connect **Arduino TX** to **HV1** and **LV1** to **Raspberry Pi RX**.  
+     - Connect **Raspberry Pi TX** to **LV2** and **HV2** to **Arduino RX**.
+
+3. **Configure Serial Communication**  
+   - Enable **UART** on the Raspberry Pi (`sudo raspi-config` → Interface Options → Serial).
+   - Use `pyserial` or `minicom` on the Pi to communicate with the Arduino.
+
+For more details, check out this [forum discussion](https://forum.arduino.cc/t/level-shifter-for-serial-communication-between-raspberry-pi-and-arduino-nano/689181) or this [tutorial](https://www.raspberrypi-spy.co.uk/2018/09/using-a-level-shifter-with-the-raspberry-pi-gpio/). Let me know if you need help troubleshooting! 🚀
