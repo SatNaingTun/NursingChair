@@ -19,6 +19,8 @@ void setup() {
     Serial.println("❌ MLX90614 not connected");
   } else {
     Serial.println("✅ MLX90614 ready");
+     scale.set_scale(-7050); // ⚠️ Change this value after calibration
+     scale.tare();
   }
 
   // Initialize HX711
